@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/:blogName', function(req, res, next) {
   res.render('index', { title: req.params.blogName });
 });
-// Get subpages
+// Get subpage
 router.get('/:blogName/:pageName', function(req, res, next) {
     res.render('index', { title: req.params.blogName + ' ' +req.params.pageName });
   });
