@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
@@ -9,12 +10,11 @@ router.get('/', function(req, res, next) {
   const options = {
     method: 'GET',
     headers: {
-      'Authorization': 'bearer c9db0c13-8bd9-43d0-adfe-c930ee7052e6',
+      'Authorization': 'bearer '+process.env.BEARER_TOKEN,
       'content-type': 'application/json'
     }};
   //Authorization header will need to be updated
-  
-  const request = httpRequest.request('https://blogpress.api.hscc.bdpa.org/v1/info', options, response => {
+    const request = httpRequest.request('https://blogpress.api.hscc.bdpa.org/v1/info', options, response => {
     console.log('Status', response.statusCode);
     console.log('Headers', response.headers);
     let responseData = '';
