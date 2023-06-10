@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
   const options = {
     method: 'GET',
     headers: {
-      'Authorization': 'bearer c9db0c13-8bd9-43d0-adfe-c930ee7052e6',
+      'Authorization': 'bearer TBD',
       'content-type': 'application/json'
     }};
   //Authorization header will need to be updated
