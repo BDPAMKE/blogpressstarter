@@ -10,7 +10,7 @@ var blogsRouter = require('./routes/blogs');
 
 var app = express();
 
-global.BPAPI_token='c9db0c13-8bd9-43d0-adfe-c930ee7052e6';
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
