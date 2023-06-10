@@ -7,8 +7,11 @@ require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var userdataRouter = require('./routes/userdata');
 var blogsRouter = require('./routes/blogs');
+var editblogpageRouter = require('./routes/editblogpage');
 var loginRouter = require('./routes/login')
+
 var app = express();
 
 
@@ -24,8 +27,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/userdata', userdataRouter);
 app.use('/blogs', blogsRouter);
+app.use('/editblogpage', editblogpageRouter);
 app.use('/login', loginRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   res.status(404).render('error', {title:'404 page not found'});
