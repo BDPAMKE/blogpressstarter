@@ -12,18 +12,26 @@ router.get('/', function(req, res, next) {
       'content-type': 'application/json'
     }};
   //Authorization header will need to be updated
-    const request = httpRequest.request('https://blogpress.api.hscc.bdpa.org/v1/users?', options, response => {
-    console.log('Status', response.statusCode);
-    console.log('Headers', response.headers);
+    const request = httpRequest.request('https://blogpress.api.hscc.bdpa.org/v1/info', options, response => {
+    //console.log('Status', response.statusCode);
+    //console.log('Headers', response.headers);
     let responseData = '';
   
     response.on('data', dataChunk => {
       responseData += dataChunk;
     });
     response.on('end', () => {
-      console.log('Response: ', responseData); //debugging code to test
-      var results=JSON.parse(responseData).users;
-      res.render('users', { title: 'Test page', resultarray:results});
+      //console.log('Response: ', responseData); //debugging code to test
+      var result=JSON.parse(responseData);
+      if (result.success){
+        var blogcount=result.info.blogs;
+        var pagecount=result.info.pages;
+        var usercount=result.info.users;
+        res.render('userdata', { title: 'User Data Page', blogs: blogcount, pages:pagecount, users:usercount });
+      }
+      else{
+        res.render('error', {title: "API Failed"});
+      }
     });
   });
   request.on('error', error => console.log('ERROR', error));
