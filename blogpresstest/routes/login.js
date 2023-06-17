@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express.Router();
+var router = login.Router();
 
 
 /* GET home page. */
@@ -130,6 +130,7 @@ router.post('/', async(req, res, next) => {
 
 
 });
+
 
 
   module.exports = router;
