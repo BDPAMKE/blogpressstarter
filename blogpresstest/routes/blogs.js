@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var MarkdownIt = require('markdown-it'),
 md = new MarkdownIt();
+const auth = require("../middleware/verifytoken");
 
 /* GET home page. */
 router.get('/:blogName', function(req, res, next) {

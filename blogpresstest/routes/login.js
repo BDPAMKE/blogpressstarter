@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 var crypto =require('crypto').webcrypto;
 var jwt=require('jsonwebtoken');
+const auth = require("../middleware/verifytoken");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
