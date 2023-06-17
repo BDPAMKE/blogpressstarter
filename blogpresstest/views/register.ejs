@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title> Registration page </title>
+        <link rel="stylesheet" href="bdpastyle.css">
+    </head>
+    <body>
+        <div class="header">
+            <a href="index.html"> <img src="bdpalogo.png"> </a>
+            <h1 class="h1header"> BDPA Project Site </h1>
+        </div>
+
+        <div class="navbar">
+            <ul>
+                <li><a href="index.html"> Home </a></li>
+                <li><a href="page2.html"> Page 2 </a></li>
+                <li><a href="register.html"> Register </a></li>
+                <li><a href="cssdemo.html"> CSS Demo </a></li>
+
+            </ul>
+        </div>
+
+
+
+        <form action="cssdemo.html" method="post">
+
+            <label for="fname"> First Name: </label>
+            <input type="text" id="fname" name="fname" required>
+            <br>
+
+            <label for="mname"> Middle Name: </label>
+            <input type="text" id="mname" name="mname">
+            <br>
+
+            <label for="lname"> Last Name: </label>
+            <input type="text" id="lname" name="lname" required>
+            <br>
+
+            <label for="gender"> Gender: </label>
+            <!-- This is a comment -->
+            <!-- Title uses a drop down, we could have used text or radio inputs-->
+            <select id="gender" name="gender">
+                <option value="Female"> Female </option>
+                <option value="Male"> Male </option>
+                <option value="Non-binary"> Non-binary </option>
+                <option value="Other/Prefer Not to Say"> Other/Prefer Not to Say </option>
+            </select>
+            <br>
+
+            <!-- Used date as input type, could have used dropdowns for M/D/Y separately-->
+            <label for="dob"> Date of Birth: </label>
+            <input type="date" id="dob" name="dob" required>
+            <br>
+            
+            <label for="email"> Email address: </label>
+            <input type="email" id="email" name="email" maxlength="20" required>
+            <br>
+
+            <!-- Phone and password added 2/26-->
+            <label for="phonenumber"> Phone: </label>
+            <input type="tel" id="phonenumber" name="phonenumber" maxlength="12"> 
+            <br>
+
+            <label for="pw"> Enter a password: </label>
+            <input type="password" id="pw" name="pw"  maxlength="25" pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%]).{11,}" title="Password must be at least 11 characters 11. A strong password is above 17 characters.
+            <br>
+
+            <label for="bname"> Blog Name </label>
+            <input type="bname" id="bname" name="bname" maxlength="20" required for non-administrators>
+            <br>
+
+            </div>
+            <!-- Answers to the security questions could be set up as password type to hide them-->
+            <label for="challenge">  CAPTCHA challenge:</label>
+            <input type="text" name="secq1" id="secq1" required>
+            <br>
+
+
+
+            <input type="submit" value="Register">
+
+        </form>
+
+
+
+
+        <p> Return to the <a href="index.html"> Home page </a> </p>
+    </body>
+
+</html>
