@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var MarkdownIt = require('markdown-it'),
 md = new MarkdownIt();
-/* test comment */
+/* test comment again */
 /* GET home page. */
 router.get('/:blogName', function(req, res, next) {
   var content=('# I want to see if this can work');
