@@ -5,5 +5,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('openblog', {title: 'Blog Name' });
 });
+router.get('/displayblog', function(req, res, next) {
+  res.render('openblog', {title: req.body.blogname });
+});
 
 module.exports = router;
