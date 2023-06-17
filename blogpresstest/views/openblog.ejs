@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./partials/head') -%> <!-- head partial -->
+    <script>
+        function MarkdownConvert(){
+            let initialcontent=document.forms["blogpage"]["content"].value;
+            //alert(initialcontent);
+            var md=window.markdownit();
+            html = md.render(initialcontent);
+            //alert(html);
+            document.getElementById("markdown-result").innerHTML = html;
+            return true;
+        }
+    </script>
+  </head>
+  <body>
+    <%- include('./partials/header') -%> 
+    <h1><%= title %></h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+    <form action = '/getblogname'>
+        <div class="mb-3 mt-3">
+            <label for="title" class="form-label">Blog Name</label>
+            <input type="text" class="form-control" id="blogname" placeholder="Enter Blog Name" name="blogname">
+          </div>
+          <div class="mb-3">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+    <div class="col">
+    </div>
+    </div>
+    </div>
+  </body>
+</html>
