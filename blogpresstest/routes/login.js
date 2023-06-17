@@ -125,7 +125,19 @@ router.post('/', async(req, res, next) => {
     }
     else //Username is at least in the system
     {
-        res.render('admin', {title:'Login successful', message: 'Welcome to the login page'});
+      var token = jwt.sign({
+        id: userName, role: role
+          }, process.env.BEARER_TOKEN, {
+          expiresIn: 86400000
+          });
+          //console.log(token);
+          global.userToken=token; //Store into global  
+      if (role=='administrator'){
+      res.render('admin', {title:'Login successful', message: 'Welcome to the admin page'});
+      }
+      else{
+        res.render('editblogpage',{title:'Login successful'});
+      }
 
     }
     
@@ -175,8 +187,8 @@ router.post('/', async(req, res, next) => {
             var userSalt=data.user.salt;
             var userKey=data.user.key;
             var pwTest=req.body.psw;
-            var userName=data.userName;
-            var role=data.role;
+            var userName=data.username;
+            var role=data.user.type;
             //console.log("Credentials",userSalt,pwTest);
             var userBuffer=convertHexToBuffer(userSalt);
             const {keyresult,saltresult}=await deriveKeyFromPassword(pwTest,userKey,userBuffer,userName,role);
