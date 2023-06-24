@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
   });
 
 router.post('/', async(req, res, next) => {
-    console.log(JSON.stringify(req.body)); //DEBUGGING CODE--DELETE UPON PRODUCTION
 
     // The API expects a 64 byte key (128 hex digits long):
     const KEY_SIZE_BYTES = 64;
@@ -121,11 +120,13 @@ router.post('/', async(req, res, next) => {
   .then(response => response.json())
   .then(async data => {
     //console.log("Message & Data ", data);
-    if (data.success === false){  //Username is not even in the system
+    if (data.success === false){  //Login Failed
         res.render('login', {title:'Login Unsuccessful', message: 'Invalid username or password'});
     }
-    else //Username is at least in the system
+    else //Login Successful
     {
+      console.log(role);
+      console.log(userName);
       var token = jwt.sign({
         id: userName, role: role
           }, process.env.BEARER_TOKEN, {
@@ -134,7 +135,7 @@ router.post('/', async(req, res, next) => {
           //console.log(token);
           global.userToken=token; //Store into global  
       if (role=='administrator'){
-      res.render('admin', {title:'Login successful', message: 'Welcome to the admin page'});
+      res.render('admin', {title:'Admin Login Successful', message: 'Welcome to the admin page', name:userName});
       }
       else{
         res.render('editblogpage',{title:'Login successful'});
@@ -149,19 +150,6 @@ router.post('/', async(req, res, next) => {
     return "error";
   })
 
-            // if (keyString==keyTest){
-            //     var token = jwt.sign({
-            //         id: userName, role: role
-            //       }, global.DB_token, {
-            //         expiresIn: 86400
-            //       });
-            //       console.log(token);
-            //       global.userToken=token; //Store into global
-            //     res.render('login', {title: 'Found User', message: 'Login successful'});
-            // }
-            // else{
-            //     res.render('login', {title: 'Found User', message: 'Login unsuccessful'});
-            // }
 
         return { keyString, saltString };
 
@@ -188,7 +176,7 @@ router.post('/', async(req, res, next) => {
             var userSalt=data.user.salt;
             var userKey=data.user.key;
             var pwTest=req.body.psw;
-            var userName=data.username;
+            var userName=data.user.username;
             var role=data.user.type;
             //console.log("Credentials",userSalt,pwTest);
             var userBuffer=convertHexToBuffer(userSalt);
