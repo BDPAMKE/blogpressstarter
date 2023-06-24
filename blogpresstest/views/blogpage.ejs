@@ -7,6 +7,19 @@
     <%- include('./partials/header') -%> 
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <%- content %> 
+    <table class="table table-hover">
+      <tr>
+        <th>Page Name</th>
+        <th>Created At</th>
+        <th>Total Views</th>
+      </tr>
+      <%for (var result in resultarray){%>
+        <tr>
+        <td> <%= resultarray[result].name %> </td> 
+        <td> <%= resultarray[result].createdAt %> </td>
+        <td> <%= resultarray[result].totalViews %> </td>
+        </tr> 
+        <%}%>
+    </table>
   </body>
 </html>
