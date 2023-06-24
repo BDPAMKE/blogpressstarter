@@ -1,34 +1,21 @@
 var express = require('express');
 var router = express.Router();
+
 const auth = require("../middleware/verifytoken");
+const myGetRestCall = require("../middleware/GetRestAPI");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  const httpRequest = require('https'); //This may end up being https in other situations
+ // this in you route 
+ const url = 'https://blogpress.api.hscc.bdpa.org/v1/users?' //- where the URL is whatever Get RestAPI Request  you are calling
+ const token = process.env.BEARER_TOKEN;
 
-  const options = {
-    method: 'GET',
-    headers: {
-      'Authorization': 'bearer '+process.env.BEARER_TOKEN,
-      'content-type': 'application/json'
-    }};
-  //Authorization header will need to be updated
-    const request = httpRequest.request('https://blogpress.api.hscc.bdpa.org/v1/users?', options, response => {
-    console.log('Status', response.statusCode);
-    console.log('Headers', response.headers);
-    let responseData = '';
-  
-    response.on('data', dataChunk => {
-      responseData += dataChunk;
-    });
-    response.on('end', () => {
-      console.log('Response: ', responseData); //debugging code to test
-      var results=JSON.parse(responseData).users;
-      res.render('users', { title: 'Test page', resultarray:results});
-    });
-  });
-  request.on('error', error => console.log('ERROR', error));
-  request.end();
+  //########################################## 
+ //This function will take the two variables and pass them to the Get RestAPI call 
+  myGetRestCall.getWithBearerToken(url, token)
+.then(data => res.render('users', { title: 'Test page', resultarray:data.users}))
+.catch(error => console.error(error));
+
 });
 
 module.exports = router;
