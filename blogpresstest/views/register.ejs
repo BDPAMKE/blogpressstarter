@@ -14,39 +14,34 @@
 <div class="row">
 <div class="col-md-6 mx-auto">
 
-<form>
+<form action="/register" method="POST">
 
 <h1 class="h3 mb-3 fw-normal">Please Register Below</h1>
 
 
 <div class="form-floating">
-<input type="text" class="form-control" id="firstname" placeholder="First Name"  required>
+<input type="text" class="form-control" id="username" name="username" placeholder="First Name"  required>
 <label for="firstname">First Name</label>
 </div>
 
 <div class="form-floating">
-<input type="text" class="form-control" id="lastname" placeholder="Last Name"  required>
-<label for="lastname">Last Name</label>
-</div>
-
-<div class="form-floating">
-<input type="email" class="form-control" id="email" placeholder="name@example.com" maxlength="20" requiredlength="10" required>
+<input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" maxlength="20" requiredlength="10" required>
 <label for="email">Email address</label>
 </div>
 
 <div class="form-floating">
-<input type="phonenumber" class="form-control" id="phonenumber" placeholder="(###)###-####" maxlength="13" requiredlength="12"
+<input type="phonenumber" class="form-control" id="phonenumber" name="phonenumber" placeholder="(###)###-####" maxlength="13" requiredlength="12"
  title="It has to be set up like this (###)###-####"  required>
 <label for="phonenumber">Phone Number</label>
 </div>
 
 <div class="form-floating">
-<input type="text" class="form-control" id="blogname" placeholder="Blog Name" maxlength="20" requiredlength="5"  required>
+<input type="text" class="form-control" id="blogname" name="blogname" placeholder="Blog Name" maxlength="20" requiredlength="5"  required>
 <label for="blogname">Blog Name</label>
 </div>
 
 <div class="form-floating">
-<input type="password" class="form-control" id="password" placeholder="Password"  maxlength="25" requiredlength="5"
+<input type="password" class="form-control" id="password" name="password" placeholder="Password"  maxlength="25" requiredlength="5"
  title="Password must be at least 11 characters 11. A strong password is above 17 characters." required>
 <label for="password">Password</label>
 </div>
