@@ -1,11 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const myGetRestCall = require('./public/GetRestAPI');
-const url = ''
-const token = 'your-bearer-token';
-myGetRestCall.getWithBearerToken(url, token)
-.then(data => console.log(data))
-.catch(error => console.error(error));
+const myGetRestCall = require('../public/GetRestAPI');
 
 
 
