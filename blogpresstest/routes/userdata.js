@@ -1,42 +1,36 @@
 var express = require('express');
 var router = express.Router();
 const auth = require("../middleware/verifytoken");
+const myGetRestCall = require("../middleware/GetRestAPI");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  const httpRequest = require('https'); //This may end up being https in other situations
+ // this in your route 
+ const url = 'https://blogpress.api.hscc.bdpa.org/v1/info' //- where the URL is whatever Get RestAPI Request  you are calling
+ const token = process.env.BEARER_TOKEN;
 
-  const options = {
-    method: 'GET',
-    headers: {
-      'Authorization': 'bearer '+process.env.BEARER_TOKEN,
-      'content-type': 'application/json'
-    }};
-  //Authorization header will need to be updated
-    const request = httpRequest.request('https://blogpress.api.hscc.bdpa.org/v1/info', options, response => {
-    //console.log('Status', response.statusCode);
-    //console.log('Headers', response.headers);
-    let responseData = '';
-  
-    response.on('data', dataChunk => {
-      responseData += dataChunk;
-    });
-    response.on('end', () => {
-      //console.log('Response: ', responseData); //debugging code to test
-      var result=JSON.parse(responseData);
-      if (result.success){
-        var blogcount=result.info.blogs;
-        var pagecount=result.info.pages;
-        var usercount=result.info.users;
+  //########################################## 
+ //This function will take the two variables and pass them to the Get RestAPI call 
+  myGetRestCall.getWithBearerToken(url, token)
+.then(data => 
+ {
+  //console.log("REST CALL ", data);
+      if (data.success){
+        var blogcount=data.info.blogs;
+        var pagecount=data.info.pages;
+        var usercount=data.info.users;
         res.render('userdata', { title: 'User Data Page', blogs: blogcount, pages:pagecount, users:usercount });
       }
       else{
         res.render('error', {title: "API Failed"});
       }
-    });
-  });
-  request.on('error', error => console.log('ERROR', error));
-  request.end();
+
+
+
+  })
+.catch(error => console.error(error));
+
+//##############################################
 });
 
 module.exports = router;
