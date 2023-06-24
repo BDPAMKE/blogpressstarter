@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
       'content-type': 'application/json'
     }};
   //Authorization header will need to be updated
+  https://private-2c64a3-hsccjcat4d54.apiary-mock.com/v1/blogs/{{blogname}}/pages
     const request = httpRequest.request('https://blogpress.api.hscc.bdpa.org/v1/users?', options, response => {
     console.log('Status', response.statusCode);
     console.log('Headers', response.headers);

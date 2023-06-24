@@ -12,6 +12,7 @@ var blogsRouter = require('./routes/blogs');
 var editblogpageRouter = require('./routes/editblogpage');
 var loginRouter = require('./routes/login')
 var openblogRouter = require('./routes/openblog');
+var getblognameRouter = require('./routes/getblogname');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/blogs', blogsRouter);
 app.use('/editblogpage', editblogpageRouter);
 app.use('/login', loginRouter);
 app.use('/openblog', openblogRouter);
+app.use('/getblogname', getblognameRouter);
 
 
 // catch 404 and forward to error handler
