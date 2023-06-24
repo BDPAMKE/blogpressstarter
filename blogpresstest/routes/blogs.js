@@ -3,6 +3,8 @@ var router = express.Router();
 var MarkdownIt = require('markdown-it'),
 md = new MarkdownIt();
 const auth = require("../middleware/verifytoken");
+const myGetRestCall = require("../middleware/GetRestAPI");
+
 
 /* GET home page. */
 router.get('/:blogName', function(req, res, next) {
