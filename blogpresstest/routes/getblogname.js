@@ -19,9 +19,9 @@ router.post('/', (req, res) => {
       'content-type': 'application/json'
     }};
 
-    // const request = httpRequest.request('https://blogpress.api.hscc.bdpa.org/v1/blogs/'+blogName+'/pages', options, response => {
+    const request = httpRequest.request('https://blogpress.api.hscc.bdpa.org/v1/blogs/'+blogName+'/pages', options, response => {
     // using the mock server for this example since not able to add a new blog to the real server
-    const request = httpRequest.request('https://private-2c64a3-hsccjcat4d54.apiary-mock.com/v1/blogs/'+ blogName +'/pages', options, response => {
+    // const request = httpRequest.request('https://private-2c64a3-hsccjcat4d54.apiary-mock.com/v1/blogs/'+ blogName +'/pages', options, response => {
 
     console.log('Status', response.statusCode);
     console.log('Headers', response.headers);
