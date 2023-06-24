@@ -13,6 +13,8 @@ var editblogpageRouter = require('./routes/editblogpage');
 var adminRouter = require('./routes/admin');
 var loginRouter = require('./routes/login');
 var logoutRouter = require('./routes/logout');
+var registerRouter = require('./routes/register');
+
 
 var app = express();
 
@@ -35,6 +37,7 @@ app.use('/editblogpage', editblogpageRouter);
 app.use('/admin', adminRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
+app.use('/register', registerRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   res.status(404).render('error', {title:'404 page not found'});
