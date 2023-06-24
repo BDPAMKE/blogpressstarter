@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const myGetRestCall = require('../public/GetRestAPI');
 
+=======
+const auth = require("../middleware/verifytoken");
 
 
 /* GET home page. */
