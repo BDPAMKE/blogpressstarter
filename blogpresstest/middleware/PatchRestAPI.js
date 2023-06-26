@@ -1,6 +1,6 @@
 const https = require('https');
 module.exports = {
-    postWithBearerToken: function  (url, token, data) {
+    patchWithBearerToken: function  (url, token, data) {
   const options = {
     method: 'PATCH',
     headers: {
