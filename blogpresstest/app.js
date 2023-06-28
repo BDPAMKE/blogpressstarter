@@ -10,7 +10,7 @@ var usersRouter = require('./routes/users');
 var userdataRouter = require('./routes/userdata');
 var blogsRouter = require('./routes/blogs');
 var editblogpageRouter = require('./routes/editblogpage');
-
+var builderRouter = require('./routes/builder');
 
 var openblogRouter = require('./routes/openblog');
 
@@ -43,7 +43,7 @@ app.use('/admin', adminRouter);
 app.use('/login', loginRouter);
 
 app.use('/openblog', openblogRouter);
-
+app.use('/builder', builderRouter);
 
 
 app.use('/logout', logoutRouter);

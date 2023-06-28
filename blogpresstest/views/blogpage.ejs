@@ -9,13 +9,16 @@
     <p>Welcome to <%= title %></p>
     <table class="table table-hover">
       <tr>
+        <th> <%= blogpage %> </th>
+      </tr>
+      <tr>
         <th>page name</th>
         <th>created at</th>
         <th>total views</th>
       </tr>
       <%for (var result in resultarray){%>
         <tr>
-        <td> <%= resultarray[result].name %> </td> 
+        <td> <a href="/blogs/<%=blogpage%>/<%= resultarray[result].name %>"><%= resultarray[result].name %></a> </td> 
         <td> <%= resultarray[result].createdAt %> </td>
         <td> <%= resultarray[result].totalViews %> </td>
         </tr> 

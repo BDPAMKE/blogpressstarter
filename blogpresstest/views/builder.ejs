@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./partials/head') -%> <!-- head partial -->
+    <script>
+        function MarkdownConvert(){
+            let initialcontent=document.forms["blogpage"]["content"].value;
+            //alert(initialcontent);
+            var md=window.markdownit();
+            html = md.render(initialcontent);
+            //alert(html);
+            document.getElementById("markdown-result").innerHTML = html;
+            return true;
+        }
+    </script>
+  </head>
+  <body onload="return MarkdownConvert()">
+    <%- include('./partials/header') -%> 
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+    <form oninput="return MarkdownConvert()" name="blogpage" id="blogpage" method="POST">
+        <div class="mb-3 mt-3">
+            <label for="title" class="form-label">Title:</label>
+            <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+          </div>
+          <div class="mb-3">
+            <label for="content" class="form-label">Content:</label>
+            <textarea class="form-control" rows="10" id="content" name="content" placeholder="<%= content %>"><%= content %></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+    <div class="col">
+        <p> Preview: </p>
+        <p id="markdown-result"> Test </p>
+    </div>
+    </div>
+    </div>
+  </body>
+</html>
