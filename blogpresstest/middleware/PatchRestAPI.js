@@ -8,7 +8,8 @@ module.exports = {
       'Content-Type': 'application/json'
     }
   };
-
+  //console.log('url'+url);
+  //console.log('data:'+data);
   return new Promise((resolve, reject) => {
     const req = https.request(url, options, res => {
       let data = '';

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./partials/head') -%> <!-- head partial -->
+    <script>
+        function MarkdownConvertProvided(){
+            let initialcontent=document.getElementById("markdown-result").innerHTML;
+            alert(initialcontent);
+            var md=window.markdownit();
+            html = md.render(initialcontent);
+            alert(html);
+            document.getElementById("markdown-result").innerHTML = html;
+            return true;
+        }
+    </script>
+  </head>
+  <body onload="MarkdownConvertProvided()">
+    <%- include('./partials/header') -%> 
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p id="markdown-result">
+        <%= content %>
+    </p>
+
+
+  </body>
+</html>
