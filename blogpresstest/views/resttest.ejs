@@ -52,8 +52,8 @@ button:hover {
     <input type="text" placeholder="Enter url" name="url" required>
     </div>
     <div>
-    <label for="body"><b>body</b></label>
-    <input type="textarea" placeholder="Enter body if method is a Post, Patch" name="body" rows="10" cols="50"  required> 
+    <label for="body"><b>body (Add a Body ONLY IF THE METHOD IS A POST OR PATCH!)</b></label>
+    <input type="text" placeholder="Enter body if method is a Post, Patch" name="body" rows="10" cols="50"  > 
    </div
    <div>
     <button type="submit">Call RestAPI</button>
@@ -63,6 +63,8 @@ button:hover {
 
   
 </form>
+
+<%= results %>
 
 </body>
 </html>
