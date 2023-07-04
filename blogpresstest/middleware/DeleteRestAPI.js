@@ -2,7 +2,7 @@ const https = require('https');
 module.exports = {
   deleteWithBearerToken: function (url, token) {
     const options = {
-      Method:'DELETE'
+      Method:'DELETE',
       headers: {
         Authorization: `Bearer ${token}`
       }
